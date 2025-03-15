@@ -34,8 +34,12 @@ transform = Transform3D(7.31322, 0, 0, 0, 11.8814, 0, 0, 0, 1, 4.6487, 0.934497,
 use_collision = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Terrain/CSGBox3D2"]
-transform = Transform3D(0.590273, 0, 0, 0, -0.000987793, -0.446669, 0, 1.04901, -0.0593757, 0.0424971, 0.108236, 0.0973535)
+transform = Transform3D(0.590273, 0, 0, 0, -0.000987793, -0.446669, 0, 1.04901, -0.0593757, 0.00539309, 0.130067, 0.0973535)
 operation = 2
+radius = 0.629883
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 11.0651, 0, 0, 0, 1, -6.40096, 5.91867, 3.79274)
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75495, 0)
