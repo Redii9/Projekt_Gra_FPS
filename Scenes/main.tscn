@@ -42,7 +42,12 @@ radius = 0.629883
 transform = Transform3D(1, 0, 0, 0, 11.0651, 0, 0, 0, 1, -6.40096, 5.91867, 3.79274)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57985, 0.945204, -1.61384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.56296, 0.945204, 2.36965)
+use_collision = true
+radius = 1.8928
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48897, 0.972568, 5.33812)
 use_collision = true
 radius = 1.8928
 
