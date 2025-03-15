@@ -41,5 +41,10 @@ radius = 0.629883
 [node name="CSGBox3D3" type="CSGBox3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 11.0651, 0, 0, 0, 1, -6.40096, 5.91867, 3.79274)
 
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.57985, 0.945204, -1.61384)
+use_collision = true
+radius = 1.8928
+
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75495, 0)
