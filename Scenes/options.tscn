@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8tawm2lx1hpm"]
+
+[ext_resource type="Script" uid="uid://c3rtapebq1gad" path="res://Scripts/options.gd" id="1_prnvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tmxy"]
+bg_color = Color(0.581094, 0.45728, 0.470233, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyyw6"]
+bg_color = Color(0.580392, 0.458824, 0.470588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww8vx"]
+bg_color = Color(0.494118, 0.454902, 0.470588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kftxf"]
+bg_color = Color(0.493041, 0.454238, 0.472409, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443323, 0.234534, 0.161196, 0.6)
+shadow_size = 5
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_prnvy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -28.0
+offset_right = 66.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="return" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_4tmxy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qyyw6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ww8vx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kftxf")
+text = "Return"
+
+[connection signal="pressed" from="Control/VBoxContainer/return" to="." method="_on_return_pressed"]

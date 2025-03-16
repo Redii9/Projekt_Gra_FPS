@@ -1,6 +1,6 @@
 extends Control
 
-var main_menu: Node = null
+var menu: Node = null
 
 func _ready() -> void:
 	$Control/VBoxContainer/adrian_credits.text = "[url=https://redii9.itch.io]Adrian Rewera(Redii9)[/url]"
@@ -14,8 +14,8 @@ func _on_return_pressed() -> void:
 	for credits in get_tree().get_nodes_in_group("credits_instances"):
 		credits.queue_free()
 	
-	if main_menu:
-		main_menu.is_credits_open = false
+	if menu:
+		menu.is_credits_open = false
 
 func _on_redii_credits_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(meta)
