@@ -1,0 +1,128 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwhbjhxkq1oce"]
+
+[ext_resource type="Script" uid="uid://efugpn8voy3l" path="res://Scripts/credits.gd" id="1_r18jl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gryuy"]
+bg_color = Color(0.581094, 0.45728, 0.470233, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccovl"]
+bg_color = Color(0.580392, 0.458824, 0.470588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bamb"]
+bg_color = Color(0.494118, 0.454902, 0.470588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xelri"]
+bg_color = Color(0.493041, 0.454238, 0.472409, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.443323, 0.234534, 0.161196, 0.6)
+shadow_size = 5
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r18jl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -59.5
+offset_right = 151.0
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Game Made By:"
+
+[node name="adrian_credits" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+
+[node name="karol_credits" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+
+[node name="michal_credits" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+
+[node name="kamil_credits" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+
+[node name="return" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_gryuy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ccovl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1bamb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xelri")
+text = "Return"
+
+[connection signal="meta_clicked" from="Control/VBoxContainer/adrian_credits" to="." method="_on_redii_credits_meta_clicked"]
+[connection signal="meta_clicked" from="Control/VBoxContainer/karol_credits" to="." method="_on_karol_credits_meta_clicked"]
+[connection signal="meta_clicked" from="Control/VBoxContainer/michal_credits" to="." method="_on_michal_credits_meta_clicked"]
+[connection signal="meta_clicked" from="Control/VBoxContainer/kamil_credits" to="." method="_on_kamil_credits_meta_clicked"]
+[connection signal="pressed" from="Control/VBoxContainer/return" to="." method="_on_return_pressed"]
