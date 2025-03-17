@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8tawm2lx1hpm"]
+[gd_scene load_steps=7 format=3 uid="uid://c8tawm2lx1hpm"]
 
 [ext_resource type="Script" uid="uid://c3rtapebq1gad" path="res://Scripts/options.gd" id="1_prnvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prnvy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tmxy"]
 bg_color = Color(0.581094, 0.45728, 0.470233, 1)
@@ -38,7 +41,7 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0.443323, 0.234534, 0.161196, 0.6)
 shadow_size = 5
 
-[node name="Options" type="Control"]
+[node name="Options" type="Control" node_paths=PackedStringArray("fullscreen_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,6 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_prnvy")
+fullscreen_button = NodePath("Control/VBoxContainer/fullscreen")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -84,6 +88,12 @@ offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="fullscreen" type="CheckButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_prnvy")
+text = "Fullscreen"
+
 [node name="return" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -93,4 +103,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ww8vx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kftxf")
 text = "Return"
 
+[connection signal="toggled" from="Control/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="Control/VBoxContainer/return" to="." method="_on_return_pressed"]
