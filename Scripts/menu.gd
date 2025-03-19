@@ -5,9 +5,16 @@ var is_options_open: bool = false
 
 var config = ConfigFile.new()
 
+var resolutions: Array[Vector2] = [
+	Vector2(1280, 720),
+	Vector2(1600, 900),
+	Vector2(1920, 1080)
+]
+
 func _ready() -> void:
 	config.load("user://settings.cfg")
 	load_fullscreen()
+	load_resolutions()
 	# sciezka do katalogu testowanie:
 	print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
 	OS.shell_open(OS.get_user_data_dir())
@@ -28,6 +35,7 @@ func _on_options_pressed() -> void:
 	 
 	var options = load("res://Scenes/options.tscn").instantiate()
 	options.add_to_group("options_instances")
+	options.resolutions = resolutions
 	options.menu = self # Przekazanie referencji do menu
 	get_tree().root.add_child(options)
 
@@ -49,3 +57,24 @@ func load_fullscreen() -> void:
 		get_window().mode = Window.MODE_FULLSCREEN
 	else:
 		get_window().mode = Window.MODE_WINDOWED
+
+func load_resolutions() -> void:
+	var resolution = config.get_value("video", "resolution", 0)
+	if resolution >= 0 and resolution < resolutions.size():
+		if !get_window().mode == Window.MODE_FULLSCREEN:
+			var selected_resolution = resolutions[resolution]
+			get_window().size = selected_resolution
+	else:
+		if !get_window().mode == Window.MODE_FULLSCREEN:
+			var selected_resolution = resolutions[0]
+			get_window().size = selected_resolution
+		config.set_value("video", "resolution", 0)
+		config.save("user://settings.cfg")
+	center_window()
+
+func center_window() -> void:
+	var screen_size = DisplayServer.screen_get_size()
+	var window_size = get_window().size
+	
+	var new_position = (screen_size - window_size) / 2
+	get_window().position = new_position
