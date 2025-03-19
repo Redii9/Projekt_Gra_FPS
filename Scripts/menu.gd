@@ -11,10 +11,13 @@ var resolutions: Array[Vector2] = [
 	Vector2(1920, 1080)
 ]
 
+var fps_limits: Array = [60, 120, 144, 240, 0]
+
 func _ready() -> void:
 	config.load("user://settings.cfg")
 	load_fullscreen()
 	load_resolutions()
+	load_fps_limit()
 	# sciezka do katalogu testowanie:
 	print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
 	OS.shell_open(OS.get_user_data_dir())
@@ -36,6 +39,7 @@ func _on_options_pressed() -> void:
 	var options = load("res://Scenes/options.tscn").instantiate()
 	options.add_to_group("options_instances")
 	options.resolutions = resolutions
+	options.fps_limits = fps_limits
 	options.menu = self # Przekazanie referencji do menu
 	get_tree().root.add_child(options)
 
@@ -78,3 +82,14 @@ func center_window() -> void:
 	
 	var new_position = (screen_size - window_size) / 2
 	get_window().position = new_position
+
+func load_fps_limit() -> void:
+	var fps = config.get_value("video", "fps", 0)
+	if fps >= 0 and fps < fps_limits.size():
+		var selected_fps = fps_limits[fps]
+		Engine.max_fps = selected_fps
+	else:
+		var selected_fps = fps_limits[0]
+		Engine.max_fps = selected_fps
+		config.set_value("video", "fps", 0)
+		config.save("user://settings.cfg")

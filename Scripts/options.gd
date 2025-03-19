@@ -5,13 +5,16 @@ var config = ConfigFile.new()
 
 @export var fullscreen_button: CheckButton
 @export var resolutions_button: OptionButton
+@export var fps_button: OptionButton
 
 var resolutions: Array[Vector2] = []
+var fps_limits: Array = []
 
 func _ready() -> void:
 	config.load("user://settings.cfg")
 	load_fullscreen()
 	load_resolutions()
+	load_fps_limit()
 
 func _on_return_pressed() -> void:
 	# Usuniecie wszystkich instancji w grupie
@@ -66,3 +69,17 @@ func center_window() -> void:
 
 func _on_resolutions_item_selected(index: int) -> void:
 	set_resolution(index)
+
+func load_fps_limit() -> void:
+	var fps = config.get_value("video", "fps", 0)
+	fps_button.selected = fps
+	set_fps_limit(fps)
+
+func set_fps_limit(index: int) -> void:
+	var selected_fps = fps_limits[index]
+	Engine.max_fps = selected_fps
+	config.set_value("video", "fps", index)
+	config.save("user://settings.cfg")
+
+func _on_fps_item_selected(index: int) -> void:
+	set_fps_limit(index)
