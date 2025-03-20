@@ -18,6 +18,7 @@ func _ready() -> void:
 	load_fullscreen()
 	load_resolutions()
 	load_fps_limit()
+	load_v_sync()
 	# sciezka do katalogu testowanie:
 	print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
 	OS.shell_open(OS.get_user_data_dir())
@@ -93,3 +94,10 @@ func load_fps_limit() -> void:
 		Engine.max_fps = selected_fps
 		config.set_value("video", "fps", 0)
 		config.save("user://settings.cfg")
+
+func load_v_sync() -> void:
+	var v_sync = config.get_value("video", "v_sync", true)
+	if v_sync:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)

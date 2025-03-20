@@ -41,7 +41,7 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0.443323, 0.234534, 0.161196, 0.6)
 shadow_size = 5
 
-[node name="Options" type="Control" node_paths=PackedStringArray("fullscreen_button", "resolutions_button", "fps_button")]
+[node name="Options" type="Control" node_paths=PackedStringArray("fullscreen_button", "resolutions_button", "fps_button", "v_sync_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +52,7 @@ script = ExtResource("1_prnvy")
 fullscreen_button = NodePath("Control/VBoxContainer/fullscreen")
 resolutions_button = NodePath("Control/VBoxContainer/resolutions")
 fps_button = NodePath("Control/VBoxContainer/fps")
+v_sync_button = NodePath("Control/VBoxContainer/v_sync")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -112,6 +113,13 @@ popup/item_1/id = 1
 popup/item_2/text = "1920x1080"
 popup/item_2/id = 2
 
+[node name="v_sync" type="CheckButton" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_prnvy")
+text = "V-sync"
+
 [node name="Label2" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -143,5 +151,6 @@ text = "Return"
 
 [connection signal="toggled" from="Control/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="item_selected" from="Control/VBoxContainer/resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="toggled" from="Control/VBoxContainer/v_sync" to="." method="_on_v_sync_toggled"]
 [connection signal="item_selected" from="Control/VBoxContainer/fps" to="." method="_on_fps_item_selected"]
 [connection signal="pressed" from="Control/VBoxContainer/return" to="." method="_on_return_pressed"]
