@@ -15,6 +15,7 @@ var bullet = load("res://Scenes/bullet.tscn")
 var instance
 
 @onready var raycast: RayCast3D = $Head/Camera3D/Raycast/RayCast3D
+@onready var gun_barrel: RayCast3D = $Head/Camera3D/Gun/RayCast3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -74,6 +75,6 @@ func shoot() -> void:
 
 func shoot_bullet() -> void:
 	instance = bullet.instantiate()
-	instance.position = raycast.global_position
-	instance.transform.basis = raycast.global_transform.basis
+	instance.position = gun_barrel.global_position
+	instance.transform.basis = gun_barrel.global_transform.basis
 	get_parent().add_child(instance)

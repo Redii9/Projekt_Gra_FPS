@@ -1,6 +1,6 @@
 extends Node3D
 
-var SPEED = 50.0
+var SPEED = 100.0
 
 @export var bullet: MeshInstance3D
 @export var raycast: RayCast3D
