@@ -5,8 +5,20 @@ extends CharacterBody3D
 @export var gravity: float = 9.8
 @export var mouse_sensitivity: float = 0.002
 
+@export var damage: int = 10
+@export var fire_rate: float = 0.5
+@export var max_distance: float = 100.0
+
+var can_shoot: bool = true
+
+var bullet = load("res://Scenes/bullet.tscn")
+var instance
+
+@onready var raycast: RayCast3D = $Head/Camera3D/Raycast/RayCast3D
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	raycast.target_position = Vector3(0, 0, -max_distance)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -15,6 +27,15 @@ func _input(event):
 		$Head/Camera3D.rotation_degrees.x = clamp($Head/Camera3D.rotation_degrees.x, -90, 90)
 
 func _physics_process(delta):
+	movement(delta)
+	
+	if Input.is_action_just_pressed("shoot") and can_shoot:
+		shoot()
+		shoot_bullet()
+	
+	move_and_slide()
+
+func movement(delta) -> void:
 	var input_dir = Vector3.ZERO
 	if Input.is_action_pressed("forward"):
 		input_dir -= transform.basis.z
@@ -34,4 +55,25 @@ func _physics_process(delta):
 			velocity.y = jump_force
 	else:
 		velocity.y -= gravity * delta
-	move_and_slide()
+
+func shoot() -> void:
+	if !can_shoot:
+		return
+	
+	print("shooted")
+	if raycast.is_colliding():
+		var target = raycast.get_collider()
+		print("Collided with: ", target.name)
+		if target.is_in_group("enemy"):
+			print("collided")
+			target.take_damage(damage)
+	
+	can_shoot = false
+	await get_tree().create_timer(fire_rate).timeout
+	can_shoot = true
+
+func shoot_bullet() -> void:
+	instance = bullet.instantiate()
+	instance.position = raycast.global_position
+	instance.transform.basis = raycast.global_transform.basis
+	get_parent().add_child(instance)

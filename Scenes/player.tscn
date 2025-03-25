@@ -24,10 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800268, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="Gun" parent="Head/Camera3D" instance=ExtResource("2_cvnsp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.371287, -0.331999, -0.471128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371287, -0.331999, -0.471128)
 
 [node name="Raycast" parent="Head/Camera3D" instance=ExtResource("3_6t5aa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.47737)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Control" type="Control" parent="Head/Camera3D"]
 layout_mode = 3

@@ -1,10 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cesf3fgh20ar0"]
+[gd_scene format=3 uid="uid://cesf3fgh20ar0"]
 
-[ext_resource type="Script" uid="uid://s24lnuo6wkge" path="res://Scripts/shoot.gd" id="1_y8ltg"]
-
-[node name="Raycast" type="Node3D" node_paths=PackedStringArray("raycast")]
-script = ExtResource("1_y8ltg")
-raycast = NodePath("RayCast3D")
+[node name="Raycast" type="Node3D"]
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 1)

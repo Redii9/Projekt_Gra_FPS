@@ -6,6 +6,9 @@ extends Node3D
 
 var can_shoot: bool = true
 
+var bullet = load("res://Scenes/bullet.tscn")
+var instance
+
 @export var raycast: RayCast3D
 
 func _ready() -> void:
@@ -15,6 +18,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 		shoot()
+		shoot_bullet()
 	
 
 func shoot() -> void:
@@ -32,3 +36,9 @@ func shoot() -> void:
 	can_shoot = false
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
+
+func shoot_bullet() -> void:
+	instance = bullet.instantiate()
+	instance.position = raycast.global_position
+	instance.transform.basis = raycast.global_transform.basis
+	get_parent().add_child(instance)
