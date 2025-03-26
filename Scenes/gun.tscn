@@ -20,4 +20,5 @@ transform = Transform3D(0.0874328, 0, 0, 0, 0.117076, 0, 0, 0, 0.0901701, 0, 0.0
 mesh = SubResource("BoxMesh_nxj5y")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.35)
 target_position = Vector3(0, 0, 1)

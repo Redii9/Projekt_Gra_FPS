@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.002
 
 @export var damage: int = 10
-@export var fire_rate: float = 0.5
+@export var fire_rate: float = 0.1
 @export var max_distance: float = 100.0
 
 var can_shoot: bool = true
@@ -30,7 +30,7 @@ func _input(event):
 func _physics_process(delta):
 	movement(delta)
 	
-	if Input.is_action_just_pressed("shoot") and can_shoot:
+	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
 		shoot_bullet()
 	
