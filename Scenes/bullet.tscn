@@ -11,7 +11,7 @@ emission_enabled = true
 emission = Color(0.978937, 0.0152184, 3.85046e-07, 1)
 emission_energy_multiplier = 5.0
 
-[node name="Bullet" type="Node3D" node_paths=PackedStringArray("bullet", "raycast")]
+[node name="Bullet" type="Node3D" node_paths=PackedStringArray("bullet", "raycast") groups=["player"]]
 script = ExtResource("1_xjght")
 bullet = NodePath("MeshInstance3D")
 raycast = NodePath("RayCast3D")

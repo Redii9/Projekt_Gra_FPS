@@ -9,7 +9,7 @@ material = SubResource("StandardMaterial3D_3dt2y")
 [sub_resource type="BoxMesh" id="BoxMesh_nxj5y"]
 material = SubResource("StandardMaterial3D_3dt2y")
 
-[node name="Gun" type="Node3D"]
+[node name="Gun" type="Node3D" groups=["player"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0874328, 0, 0, 0, 0.117076, 0, 0, 0, 0.659857, 0, 0, 0)

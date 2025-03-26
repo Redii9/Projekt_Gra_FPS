@@ -5,7 +5,6 @@ extends CharacterBody3D
 @export var gravity: float = 9.8
 @export var mouse_sensitivity: float = 0.002
 
-@export var damage: int = 10
 @export var fire_rate: float = 0.1
 @export var max_distance: float = 100.0
 
@@ -62,12 +61,6 @@ func shoot() -> void:
 		return
 	
 	print("shooted")
-	if raycast.is_colliding():
-		var target = raycast.get_collider()
-		print("Collided with: ", target.name)
-		if target.is_in_group("enemy"):
-			print("collided")
-			target.take_damage(damage)
 	
 	can_shoot = false
 	await get_tree().create_timer(fire_rate).timeout
