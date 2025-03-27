@@ -26,7 +26,7 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_6afsh"]
 size = Vector3(0.02, 0.02, 0.02)
 
-[node name="Bullet" type="Node3D" node_paths=PackedStringArray("bullet", "raycast", "hit_particles") groups=["player"]]
+[node name="Bullet" type="Node3D" node_paths=PackedStringArray("bullet", "raycast", "hit_particles")]
 script = ExtResource("1_xjght")
 bullet = NodePath("MeshInstance3D")
 raycast = NodePath("RayCast3D")

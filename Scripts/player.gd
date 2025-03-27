@@ -11,7 +11,6 @@ extends CharacterBody3D
 var can_shoot: bool = true
 
 var bullet = load("res://Scenes/bullet.tscn")
-var instance
 
 @onready var raycast: RayCast3D = $Head/Camera3D/Raycast/RayCast3D
 @onready var gun_barrel: RayCast3D = $Head/Camera3D/Gun/RayCast3D
@@ -26,12 +25,13 @@ func _input(event):
 		$Head/Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Head/Camera3D.rotation_degrees.x = clamp($Head/Camera3D.rotation_degrees.x, -90, 90)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	movement(delta)
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
 		shoot_bullet()
+	
 	
 	move_and_slide()
 
@@ -60,14 +60,17 @@ func shoot() -> void:
 	if !can_shoot:
 		return
 	
-	print("shooted")
-	
 	can_shoot = false
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
 
 func shoot_bullet() -> void:
-	instance = bullet.instantiate()
+	var instance = bullet.instantiate()
 	instance.position = gun_barrel.global_position
 	instance.transform.basis = gun_barrel.global_transform.basis
 	get_parent().add_child(instance)
+
+# Trzeba bedzie uzupelnic mechanike otrzymywania damage
+# dodac hp i utrate hp oraz mechanika gdy spadnie ponizej 0 (hp <= 0)
+func take_player_damage(damage):
+	print("Player took", damage, " damage")
