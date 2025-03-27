@@ -74,3 +74,13 @@ func shoot_bullet() -> void:
 # dodac hp i utrate hp oraz mechanika gdy spadnie ponizej 0 (hp <= 0)
 func take_player_damage(damage):
 	print("Player took", damage, " damage")
+	apply_end_screen()
+
+func apply_end_screen() -> void:
+	var end_screen = load("res://Scenes/end_screen.tscn").instantiate()
+	end_screen.add_to_group("end_screen_instances")
+	get_tree().root.add_child(end_screen)
+	var main_nodes = get_tree().get_nodes_in_group("game")
+	for node in main_nodes:
+		node.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
