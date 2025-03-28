@@ -3,11 +3,25 @@ extends CharacterBody3D
 @export var health: int = 20
 @export var enemy_damage: int = 5
 @export var damage_cooldown: float = 0.5
+@export var speed: float = 3.0
 var player_in_area = null
 #var can_deal_damage: bool = true
+@export var nav_agent: NavigationAgent3D
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
+
+
+func _ready() -> void:
+	nav_agent.max_speed = speed
+	_update_target_position()
 
 func _physics_process(_delta: float) -> void:
-	pass
+	_update_target_position()
+	var next_position = nav_agent.get_next_path_position()
+	var direction = (next_position - global_position).normalized() # obliczanie kierunku normalized zmiena wektor na wersor
+	
+	velocity = direction * speed
+	
+	move_and_slide()
 
 func take_damage(damage: int) -> void:
 	health -= damage
@@ -28,3 +42,7 @@ func deal_damage() -> void:
 	while player_in_area != null:
 		player_in_area.take_player_damage(enemy_damage)
 		await get_tree().create_timer(damage_cooldown).timeout
+
+func _update_target_position():
+	if player:
+		nav_agent.target_position = player.global_position

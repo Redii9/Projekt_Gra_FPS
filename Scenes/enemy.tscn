@@ -14,8 +14,9 @@ material = SubResource("StandardMaterial3D_hghv2")
 radius = 0.662027
 height = 2.06712
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent") groups=["enemy"]]
 script = ExtResource("1_hghv2")
+nav_agent = NodePath("NavigationAgent3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_1f0kj")
@@ -27,6 +28,8 @@ shape = SubResource("CapsuleShape3D_afpow")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 shape = SubResource("CapsuleShape3D_hghv2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

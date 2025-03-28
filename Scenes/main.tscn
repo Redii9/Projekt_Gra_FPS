@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ny1bvo5piibq"]
+[gd_scene load_steps=8 format=3 uid="uid://ny1bvo5piibq"]
 
 [ext_resource type="Script" uid="uid://q85so3xnavo3" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dyldx3763b2h4" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -16,6 +16,10 @@ background_mode = 2
 sky = SubResource("Sky_bo1nx")
 tonemap_mode = 2
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_8gbba"]
+vertices = PackedVector3Array(-6.32486, 0.993797, 9.1168, -6.32486, 0.993797, 8.3668, -7.57486, 0.993797, 8.1168, -9.32486, 0.993797, 9.1168, -7.57486, 0.993797, 6.3668, -6.32486, 0.993797, 6.1168, -6.32486, 0.993797, 4.8668, -8.07486, 0.993797, 4.6168, 0.425138, 0.993797, -2.6332, 1.67514, 0.993797, -2.8832, 1.67514, 0.993797, -9.1332, -9.32486, 0.993797, -9.1332, -5.32486, 0.993797, -2.3832, -9.07486, 0.993797, 3.1168, -9.07486, 0.993797, 1.6168, -8.32486, 0.993797, 0.6168, -8.07486, 0.993797, -1.1332, -7.07486, 0.993797, -2.1332, -3.32486, 0.993797, -0.6332, 0.425138, 0.993797, -1.1332, 8.67514, 0.993797, -2.8832, 8.92514, 0.993797, -1.6332, 9.17514, 0.993797, -1.6332, 9.17514, 0.993797, -9.1332, 2.92514, 0.993797, -2.8832, 3.17514, 0.993797, -1.6332, 6.17514, 0.993797, -1.6332, 6.42514, 0.993797, -2.8832, 8.67514, 0.993797, -0.6332, 9.17514, 0.993797, 9.1168, -5.32486, 0.993797, 8.1168, -5.57486, 0.993797, 4.8668, -5.32486, 0.993797, 6.3668, -4.32486, 0.993797, 3.8668, -3.32486, 0.993797, 1.3668, -4.07486, 0.993797, 2.1168, 2.92514, 0.993797, -0.6332, 0.675138, 0.993797, -0.6332, 6.42514, 0.993797, -0.6332, -5.82486, 0.993797, 0.1168, -5.07486, 0.993797, 0.1168, -5.32486, 1.2438, -0.3832, -6.07486, 0.993797, -0.3832, -6.32486, 4.2438, -0.1332, -6.32486, 4.2438, 0.6168, -5.32486, 4.4938, 0.6168, -5.57486, 4.2438, -0.3832, -7.07486, 2.9938, 2.8668, -6.07486, 2.9938, 2.8668, -6.32486, 3.2438, 2.3668, -7.07486, 3.2438, 2.3668)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 12, 9), PackedInt32Array(9, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(13, 3, 14), PackedInt32Array(14, 3, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 11), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(7, 3, 13), PackedInt32Array(11, 17, 16), PackedInt32Array(19, 18, 8), PackedInt32Array(8, 18, 12), PackedInt32Array(11, 12, 17), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(24, 10, 27), PackedInt32Array(27, 10, 23), PackedInt32Array(23, 20, 27), PackedInt32Array(24, 9, 10), PackedInt32Array(21, 22, 28), PackedInt32Array(28, 22, 29), PackedInt32Array(1, 30, 0), PackedInt32Array(0, 30, 29), PackedInt32Array(5, 6, 31), PackedInt32Array(5, 31, 32), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 35, 34), PackedInt32Array(34, 37, 36), PackedInt32Array(26, 38, 25), PackedInt32Array(25, 38, 36), PackedInt32Array(34, 36, 38), PackedInt32Array(19, 37, 18), PackedInt32Array(18, 37, 34), PackedInt32Array(30, 32, 33), PackedInt32Array(33, 34, 30), PackedInt32Array(30, 34, 38), PackedInt32Array(30, 38, 28), PackedInt32Array(30, 28, 29), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(43, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(50, 49, 47), PackedInt32Array(47, 49, 48)]
+
 [node name="Main" type="Node3D" groups=["game"]]
 script = ExtResource("1_bo1nx")
 
@@ -26,35 +30,6 @@ environment = SubResource("Environment_8gbba")
 transform = Transform3D(-0.820972, 0.494474, -0.285483, -1.56768e-08, 0.499998, 0.866027, 0.570968, 0.710984, -0.410484, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Terrain" type="Node3D" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(19.6222, 0, 0, 0, 1, 0, 0, 0, 19.2664, -0.0137625, 0, 0)
-use_collision = true
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(7.31322, 0, 0, 0, 11.8814, 0, 0, 0, 1, 4.6487, 0.934497, -1.72282)
-use_collision = true
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Terrain/CSGBox3D2"]
-transform = Transform3D(0.590273, 0, 0, 0, -0.000987793, -0.446669, 0, 1.04901, -0.0593757, 0.00539309, 0.130067, 0.0973535)
-operation = 2
-radius = 0.629883
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 11.0651, 0, 0, 0, 1, -6.40096, 5.91867, 7.20125)
-use_collision = true
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.56296, 0.945204, 2.36965)
-use_collision = true
-radius = 1.8928
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78159, 2.17501, 0.247704)
-use_collision = true
-radius = 1.8928
-
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75495, 0)
 
@@ -63,3 +38,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53517, -7.07452)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_8gbba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10257, 2.10449, -7.07452)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_8gbba")
+
+[node name="Terrain" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Terrain"]
+transform = Transform3D(19.6222, 0, 0, 0, 1, 0, 0, 0, 19.2664, -0.0137625, 0, 0)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Terrain"]
+transform = Transform3D(7.31322, 0, 0, 0, 11.8814, 0, 0, 0, 1, 4.6487, 0.934497, -1.72282)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/Terrain/CSGBox3D2"]
+transform = Transform3D(0.590273, 0, 0, 0, -0.000987793, -0.446669, 0, 1.04901, -0.0593757, 0.00539309, 0.130067, 0.0973535)
+operation = 2
+radius = 0.629883
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 11.0651, 0, 0, 0, 1, -6.40096, 5.91867, 7.20125)
+use_collision = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="NavigationRegion3D/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.56296, 0.945204, 2.36965)
+use_collision = true
+radius = 1.8928
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="NavigationRegion3D/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78159, 2.17501, 0.247704)
+use_collision = true
+radius = 1.8928
