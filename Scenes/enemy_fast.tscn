@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b86ovv2jose55"]
+
+[ext_resource type="Script" uid="uid://dpclarmcwkpy2" path="res://Scripts/enemy_fast.gd" id="1_7e8xf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hghv2"]
+albedo_color = Color(0.521269, 0, 0.122374, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y3yis"]
+material = SubResource("StandardMaterial3D_hghv2")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_60amu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_su8iu"]
+radius = 0.662027
+height = 2.06712
+
+[node name="Enemy_Fast" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent") groups=["enemy"]]
+script = ExtResource("1_7e8xf")
+nav_agent = NodePath("NavigationAgent3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_y3yis")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_60amu")
+
+[node name="DamageArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("CapsuleShape3D_su8iu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
