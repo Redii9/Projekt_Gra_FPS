@@ -77,7 +77,7 @@ func take_player_damage(damage):
 	apply_end_screen()
 
 func apply_end_screen() -> void:
-	var end_screen = load("res://Scenes/end_screen.tscn").instantiate()
+	var end_screen = load("res://Scenes/UI/end_screen.tscn").instantiate()
 	end_screen.add_to_group("end_screen_instances")
 	get_tree().root.add_child(end_screen)
 	var main_nodes = get_tree().get_nodes_in_group("game")

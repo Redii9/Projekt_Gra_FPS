@@ -37,7 +37,7 @@ func _on_options_pressed() -> void:
 	
 	is_options_open = true
 	 
-	var options = load("res://Scenes/options.tscn").instantiate()
+	var options = load("res://Scenes/UI/options.tscn").instantiate()
 	options.add_to_group("options_instances")
 	options.resolutions = resolutions
 	options.fps_limits = fps_limits
@@ -51,7 +51,7 @@ func _on_credits_pressed() -> void:
 	
 	is_credits_open = true
 	 
-	var credits = load("res://Scenes/credits.tscn").instantiate()
+	var credits = load("res://Scenes/UI/credits.tscn").instantiate()
 	credits.add_to_group("credits_instances")
 	credits.menu = self # Przekazanie referencji do menu
 	get_tree().root.add_child(credits)
