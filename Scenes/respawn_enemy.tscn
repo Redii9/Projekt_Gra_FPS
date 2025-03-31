@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bli3ddbi3hb2h"]
+
+[ext_resource type="Script" uid="uid://g4u48ugd0rvx" path="res://Scripts/respawn_enemy.gd" id="1_g17r2"]
+[ext_resource type="PackedScene" uid="uid://bpnwh7rwbstoq" path="res://Scenes/enemy.tscn" id="2_4gn8a"]
+
+[node name="Respawn_Enemy" type="Node3D" node_paths=PackedStringArray("spawn_markers") groups=["respawn_enemy"]]
+script = ExtResource("1_g17r2")
+enemy_scene = ExtResource("2_4gn8a")
+spawn_markers = [NodePath("Marker3D")]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167804, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.504
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

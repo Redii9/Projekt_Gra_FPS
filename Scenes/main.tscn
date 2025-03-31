@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ny1bvo5piibq"]
+[gd_scene load_steps=10 format=3 uid="uid://ny1bvo5piibq"]
 
 [ext_resource type="Script" uid="uid://q85so3xnavo3" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dyldx3763b2h4" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bpnwh7rwbstoq" path="res://Scenes/enemy.tscn" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b86ovv2jose55" path="res://Scenes/enemy_fast.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bli3ddbi3hb2h" path="res://Scenes/respawn_enemy.tscn" id="5_kry3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -30,6 +31,9 @@ environment = SubResource("Environment_8gbba")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.820972, 0.494474, -0.285483, -1.56768e-08, 0.499998, 0.866027, 0.570968, 0.710984, -0.410484, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Respawn_Enemy" parent="." instance=ExtResource("5_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28937, 1.5378, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75495, 0)

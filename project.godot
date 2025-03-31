@@ -36,6 +36,7 @@ folder_colors={
 enemy=""
 player=""
 game=""
+respawn_enemy=""
 
 [gui]
 
