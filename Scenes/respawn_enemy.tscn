@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bli3ddbi3hb2h"]
+[gd_scene load_steps=2 format=3 uid="uid://bli3ddbi3hb2h"]
 
 [ext_resource type="Script" uid="uid://g4u48ugd0rvx" path="res://Scripts/respawn_enemy.gd" id="1_g17r2"]
-[ext_resource type="PackedScene" uid="uid://bpnwh7rwbstoq" path="res://Scenes/enemy.tscn" id="2_4gn8a"]
 
 [node name="Respawn_Enemy" type="Node3D" node_paths=PackedStringArray("spawn_markers") groups=["respawn_enemy"]]
 script = ExtResource("1_g17r2")
-enemy_scene = ExtResource("2_4gn8a")
-spawn_markers = [NodePath("Marker3D")]
+spawn_markers = [NodePath("Marker3D"), NodePath("Marker3D2")]
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167804, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29721, 0.168421, 0)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.504

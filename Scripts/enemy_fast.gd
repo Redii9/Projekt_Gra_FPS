@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var health: int = 20
 @export var enemy_damage: int = 5
 @export var damage_cooldown: float = 0.3
-@export var current_speed: float = 0.0
+@export var current_speed: float = 2.0
 @export var max_speed: float = 8.0
 @export var acceleration: float = 1.0
 
