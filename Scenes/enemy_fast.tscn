@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b86ovv2jose55"]
+[gd_scene load_steps=8 format=3 uid="uid://b86ovv2jose55"]
 
 [ext_resource type="Script" uid="uid://dpclarmcwkpy2" path="res://Scripts/enemy_fast.gd" id="1_7e8xf"]
 
@@ -13,6 +13,14 @@ material = SubResource("StandardMaterial3D_hghv2")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_su8iu"]
 radius = 0.662027
 height = 2.06712
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7e8xf"]
+albedo_color = Color(0.531411, 0.491683, 0.236915, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_60amu"]
+material = SubResource("StandardMaterial3D_7e8xf")
+radius = 0.1
+height = 0.5
 
 [node name="Enemy_Fast" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent") groups=["enemy"]]
 script = ExtResource("1_7e8xf")
@@ -30,6 +38,10 @@ shape = SubResource("CapsuleShape3D_60amu")
 shape = SubResource("CapsuleShape3D_su8iu")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00404689, 0.447782, 0.453762)
+mesh = SubResource("CapsuleMesh_60amu")
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
