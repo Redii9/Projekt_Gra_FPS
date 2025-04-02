@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpnwh7rwbstoq"]
+[gd_scene load_steps=7 format=3 uid="uid://bpnwh7rwbstoq"]
 
 [ext_resource type="Script" uid="uid://b7l38iw7ee0rh" path="res://Scripts/enemy.gd" id="1_hghv2"]
 
@@ -13,6 +13,10 @@ material = SubResource("StandardMaterial3D_hghv2")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hghv2"]
 radius = 0.662027
 height = 2.06712
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hghv2"]
+radius = 0.1
+height = 0.5
 
 [node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent") groups=["enemy"]]
 script = ExtResource("1_hghv2")
@@ -30,6 +34,10 @@ shape = SubResource("CapsuleShape3D_afpow")
 shape = SubResource("CapsuleShape3D_hghv2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00404689, 0.447782, 0.453762)
+mesh = SubResource("CapsuleMesh_hghv2")
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

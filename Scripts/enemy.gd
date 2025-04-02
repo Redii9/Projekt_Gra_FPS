@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var enemy_damage: int = 5
 @export var damage_cooldown: float = 0.5
 @export var speed: float = 3.0
+@export var rotation_speed: float = 5.0
 var player_in_area = null
 #var can_deal_damage: bool = true
 @export var nav_agent: NavigationAgent3D
@@ -14,10 +15,14 @@ func _ready() -> void:
 	nav_agent.max_speed = speed
 	_update_target_position()
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_update_target_position()
 	var next_position = nav_agent.get_next_path_position()
 	var direction = (next_position - global_position).normalized() # obliczanie kierunku normalized zmiena wektor na wersor
+	
+	if direction.length() > 0.1: # Tylko jesli się porusza
+		var target_rotation = atan2(direction.x, direction.z) # Kierunek ruchu
+		rotation.y = lerp_angle(rotation.y, target_rotation, rotation_speed * delta)
 	
 	velocity = direction * speed
 	
