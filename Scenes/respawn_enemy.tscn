@@ -4,6 +4,7 @@
 
 [node name="Respawn_Enemy" type="Node3D" node_paths=PackedStringArray("spawn_markers") groups=["respawn_enemy"]]
 script = ExtResource("1_g17r2")
+max_enemies = 30
 spawn_markers = [NodePath("Marker3D"), NodePath("Marker3D2")]
 
 [node name="Marker3D" type="Marker3D" parent="."]
