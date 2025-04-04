@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cue2jkrxb2fyf"]
+
+[ext_resource type="Script" uid="uid://da81ah52vi0cq" path="res://Scripts/enemy_bullet.gd" id="1_tcvu8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1abah"]
+size = Vector3(0.05, 0.05, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcvu8"]
+albedo_color = Color(0.996078, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.978937, 0.0152184, 3.85046e-07, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54jiv"]
+albedo_color = Color(0.996078, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.980392, 0.0156863, 0, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6yqb"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_72t2l"]
+size = Vector3(0.02, 0.02, 0.02)
+
+[node name="Enemy_Bullet" type="Node3D" node_paths=PackedStringArray("bullet", "raycast", "hit_particles")]
+script = ExtResource("1_tcvu8")
+bullet = NodePath("MeshInstance3D")
+raycast = NodePath("RayCast3D")
+hit_particles = NodePath("GPUParticles3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_1abah")
+surface_material_override/0 = SubResource("StandardMaterial3D_tcvu8")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.85272)
+material_override = SubResource("StandardMaterial3D_54jiv")
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_b6yqb")
+draw_pass_1 = SubResource("BoxMesh_72t2l")
