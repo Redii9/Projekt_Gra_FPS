@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var enemy_scene: Array[PackedScene] = [load("res://Scenes/enemy.tscn"),
-load("res://Scenes/enemy_fast.tscn")]
+load("res://Scenes/enemy_fast.tscn"), load("res://Scenes/enemy_range.tscn")]
 @export var max_enemies = 10
 @export var spawn_markers: Array[Marker3D] = []
 
