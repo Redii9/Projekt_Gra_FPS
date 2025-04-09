@@ -37,6 +37,7 @@ enemy=""
 player=""
 game=""
 respawn_enemy=""
+in_game_ui=""
 
 [gui]
 

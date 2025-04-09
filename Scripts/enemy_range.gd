@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var raycast: RayCast3D
 @export var nav_agent: NavigationAgent3D
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
+@onready var in_game_ui: Control = get_tree().get_first_node_in_group("in_game_ui")
 
 var bullet = load("res://Scenes/enemy_bullet.tscn")
 
@@ -22,6 +23,7 @@ func _ready() -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
+		in_game_ui.kill_count += 1
 		queue_free()
 
 func _physics_process(delta: float) -> void:

@@ -7,6 +7,7 @@ extends CharacterBody3D
 
 @export var fire_rate: float = 0.1
 @export var max_distance: float = 100.0
+@export var health: float = 30.0
 
 var can_shoot: bool = true
 
@@ -73,8 +74,10 @@ func shoot_bullet() -> void:
 # Trzeba bedzie uzupelnic mechanike otrzymywania damage
 # dodac hp i utrate hp oraz mechanika gdy spadnie ponizej 0 (hp <= 0)
 func take_player_damage(damage):
+	health = health - damage
 	print("Player took", damage, " damage")
-	apply_end_screen()
+	if health <= 0:
+		apply_end_screen()
 
 func apply_end_screen() -> void:
 	var end_screen = load("res://Scenes/UI/end_screen.tscn").instantiate()

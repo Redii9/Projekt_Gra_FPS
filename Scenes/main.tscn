@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ny1bvo5piibq"]
+[gd_scene load_steps=12 format=3 uid="uid://ny1bvo5piibq"]
 
 [ext_resource type="Script" uid="uid://q85so3xnavo3" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dyldx3763b2h4" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b86ovv2jose55" path="res://Scenes/enemy_fast.tscn" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bli3ddbi3hb2h" path="res://Scenes/respawn_enemy.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ydrwhnui3t3d" path="res://Scenes/enemy_range.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://cau7s6if7cyob" path="res://Scenes/UI/in_game.tscn" id="7_6bp64"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -82,3 +83,5 @@ radius = 1.8928
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.78159, 2.17501, 0.247704)
 use_collision = true
 radius = 1.8928
+
+[node name="in_game" parent="." instance=ExtResource("7_6bp64")]
