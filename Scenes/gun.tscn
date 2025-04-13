@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6akga4dvv420"]
 
-[ext_resource type="PackedScene" uid="uid://dpptnu4cr2c2p" path="res://Scenes/GunMini1.glb" id="1_nxj5y"]
+[ext_resource type="PackedScene" uid="uid://dpptnu4cr2c2p" path="res://Scenes/Blender/GunMini1.glb" id="1_nxj5y"]
 
 [node name="Gun" type="Node3D" groups=["player"]]
 

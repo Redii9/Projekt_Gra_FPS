@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dpptnu4cr2c2p"
-path="res://.godot/imported/GunMini1.glb-d432bae765b26c9fd853e1e48f87763c.scn"
+path="res://.godot/imported/GunMini1.glb-2f444a23ce02452001f85276d03232e2.scn"
 
 [deps]
 
-source_file="res://Scenes/GunMini1.glb"
-dest_files=["res://.godot/imported/GunMini1.glb-d432bae765b26c9fd853e1e48f87763c.scn"]
+source_file="res://Scenes/Blender/GunMini1.glb"
+dest_files=["res://.godot/imported/GunMini1.glb-2f444a23ce02452001f85276d03232e2.scn"]
 
 [params]
 

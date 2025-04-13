@@ -24,7 +24,7 @@ initial_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_72t2l"]
-size = Vector3(0.02, 0.02, 0.02)
+size = Vector3(0.01, 0.01, 0.01)
 
 [node name="Enemy_Bullet" type="Node3D" node_paths=PackedStringArray("bullet", "raycast", "hit_particles")]
 script = ExtResource("1_tcvu8")
