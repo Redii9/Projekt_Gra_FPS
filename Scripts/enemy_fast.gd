@@ -13,6 +13,9 @@ var player_in_area = null
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var in_game_ui: Control = get_tree().get_first_node_in_group("in_game_ui")
 
+@onready var hp_renew: PackedScene = load("res://Scenes/hp_renew.tscn")
+@export var drop_hp_chance: float = 0.2
+
 func _ready() -> void:
 	nav_agent.max_speed = max_speed
 	_update_target_position()
@@ -36,6 +39,7 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
 		in_game_ui.kill_count += 1
+		drop_hp_renew()
 		player_in_area = null
 		queue_free()
 
@@ -56,3 +60,9 @@ func deal_damage() -> void:
 func _update_target_position():
 	if player:
 		nav_agent.target_position = player.global_position
+
+func drop_hp_renew() -> void:
+	if randf() <= drop_hp_chance:
+		var hp = hp_renew.instantiate()
+		hp.global_transform = global_transform
+		get_parent().add_child(hp)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ycvnr8nyb4q3"]
+
+[ext_resource type="Script" uid="uid://dqmea1sac77cb" path="res://Scripts/hp_renew.gd" id="1_tjhha"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_y0vax"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07xhm"]
+albedo_color = Color(0.41921, 0.541719, 0.107256, 1)
+emission_enabled = true
+emission = Color(0.307327, 0.455906, 0.160369, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bbstx"]
+radius = 0.25
+
+[node name="HP_Renew" type="Node3D"]
+script = ExtResource("1_tjhha")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000794977, 0)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_y0vax")
+surface_material_override/0 = SubResource("StandardMaterial3D_07xhm")
+
+[node name="Renew" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Renew"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000149935, 0)
+shape = SubResource("SphereShape3D_bbstx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Renew" to="." method="_on_renew_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

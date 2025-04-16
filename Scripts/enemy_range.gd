@@ -16,6 +16,9 @@ var bullet = load("res://Scenes/enemy_bullet.tscn")
 var can_shoot: bool = true
 var fire_rate: float = 1.0
 
+@onready var hp_renew: PackedScene = load("res://Scenes/hp_renew.tscn")
+@export var drop_hp_chance: float = 0.2
+
 func _ready() -> void:
 	nav_agent.max_speed = speed
 	_update_target_position()
@@ -24,6 +27,7 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
 		in_game_ui.kill_count += 1
+		drop_hp_renew()
 		queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -73,3 +77,9 @@ func shoot_bullet() -> void:
 func _update_target_position():
 	if player:
 		nav_agent.target_position = player.global_position
+
+func drop_hp_renew() -> void:
+	if randf() <= drop_hp_chance:
+		var hp = hp_renew.instantiate()
+		hp.global_transform = global_transform
+		get_parent().add_child(hp)
