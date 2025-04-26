@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var in_game_ui: Control = get_tree().get_first_node_in_group("in_game_ui")
 
-var bullet = load("res://Scenes/enemy_bullet.tscn")
+@onready var bullet = load("res://Scenes/enemy_bullet.tscn")
 
 var can_shoot: bool = true
 var fire_rate: float = 1.0
@@ -19,7 +19,14 @@ var fire_rate: float = 1.0
 @onready var hp_renew: PackedScene = load("res://Scenes/hp_renew.tscn")
 @export var drop_hp_chance: float = 0.2
 
+@export var damage_boost: int = 1
+@export var kills_need_for_boost: int = 10
+
 func _ready() -> void:
+	#var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
+	#if boost_multiplier > 0:
+		#bullet.damage += damage_boost * boost_multiplier
+	
 	nav_agent.max_speed = speed
 	_update_target_position()
 

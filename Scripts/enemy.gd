@@ -14,8 +14,14 @@ var player_in_area = null
 @onready var hp_renew: PackedScene = load("res://Scenes/hp_renew.tscn")
 @export var drop_hp_chance: float = 0.2
 
+@export var hp_boost: int = 1
+@export var kills_need_for_boost: int = 10
 
 func _ready() -> void:
+	var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
+	if boost_multiplier > 0:
+		health += hp_boost * boost_multiplier
+	
 	nav_agent.max_speed = speed
 	_update_target_position()
 
