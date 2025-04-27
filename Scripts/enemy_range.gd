@@ -23,10 +23,6 @@ var fire_rate: float = 1.0
 @export var kills_need_for_boost: int = 10
 
 func _ready() -> void:
-	#var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
-	#if boost_multiplier > 0:
-		#bullet.damage += damage_boost * boost_multiplier
-	
 	nav_agent.max_speed = speed
 	_update_target_position()
 
@@ -76,6 +72,7 @@ func shoot() -> void:
 
 func shoot_bullet() -> void:
 	var instance = bullet.instantiate()
+	boost_stats(instance)
 	get_parent().add_child(instance)
 	instance.position = raycast.global_position
 	var direction_to_player = (player.global_position - raycast.global_position).normalized()
@@ -90,3 +87,8 @@ func drop_hp_renew() -> void:
 		var hp = hp_renew.instantiate()
 		hp.global_transform = global_transform
 		get_parent().add_child(hp)
+
+func boost_stats(instance) -> void:
+	var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
+	if boost_multiplier > 0:
+		instance.damage += damage_boost * boost_multiplier

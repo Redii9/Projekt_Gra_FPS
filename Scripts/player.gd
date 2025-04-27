@@ -71,8 +71,6 @@ func shoot_bullet() -> void:
 	instance.transform.basis = gun_barrel.global_transform.basis
 	get_parent().add_child(instance)
 
-# Trzeba bedzie uzupelnic mechanike otrzymywania damage
-# dodac hp i utrate hp oraz mechanika gdy spadnie ponizej 0 (hp <= 0)
 func take_player_damage(damage):
 	health = health - damage
 	print("Player took", damage, " damage")

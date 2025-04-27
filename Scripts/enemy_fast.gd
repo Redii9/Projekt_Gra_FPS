@@ -20,10 +20,7 @@ var player_in_area = null
 @export var kills_need_for_boost: int = 10
 
 func _ready() -> void:
-	var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
-	if boost_multiplier > 0:
-		max_speed += speed_boost * boost_multiplier
-	
+	boost_stats()
 	nav_agent.max_speed = max_speed
 	_update_target_position()
 
@@ -73,3 +70,8 @@ func drop_hp_renew() -> void:
 		var hp = hp_renew.instantiate()
 		hp.global_transform = global_transform
 		get_parent().add_child(hp)
+
+func boost_stats() -> void:
+	var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
+	if boost_multiplier > 0:
+		max_speed += speed_boost * boost_multiplier
