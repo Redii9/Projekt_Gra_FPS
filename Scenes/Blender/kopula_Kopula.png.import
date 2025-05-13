@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://im45fp3el1b2"
+path.s3tc="res://.godot/imported/kopula_Kopula.png-5f4ac8b49effc13f24a1939cdf03720f.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "54ccc37c11628d92463c8fdef5db5a56"
+}
+
+[deps]
+
+source_file="res://Scenes/Blender/kopula_Kopula.png"
+dest_files=["res://.godot/imported/kopula_Kopula.png-5f4ac8b49effc13f24a1939cdf03720f.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
