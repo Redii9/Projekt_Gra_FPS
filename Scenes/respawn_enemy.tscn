@@ -7,7 +7,11 @@
 [node name="Respawn_Enemy" type="Node3D" node_paths=PackedStringArray("spawn_markers") groups=["respawn_enemy"]]
 script = ExtResource("1_g17r2")
 max_enemies = 30
-spawn_markers = [NodePath("Marker3D"), NodePath("Marker3D2")]
+spawn_markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.504
+autostart = true
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167804, 0)
@@ -25,8 +29,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29721, 0.168421, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D2/Area3D"]
 shape = SubResource("CapsuleShape3D_xmhp8")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.504
-autostart = true
+[node name="Marker3D3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78077, 0.168421, 0)
+
+[node name="Area3D" type="Area3D" parent="Marker3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D3/Area3D"]
+shape = SubResource("CapsuleShape3D_xmhp8")
+
+[node name="Marker3D4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1734, 0.168421, 0)
+
+[node name="Area3D" type="Area3D" parent="Marker3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Marker3D4/Area3D"]
+shape = SubResource("CapsuleShape3D_xmhp8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
