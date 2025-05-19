@@ -22,8 +22,8 @@ var fire_rate: float = 1.0
 @export var damage_boost: int = 1
 @export var kills_need_for_boost: int = 10
 
-@onready var enemy_death = $"../Enemy_Death"
-@onready var enemy_gunshot = $"../Enemy_Gunshot"
+@onready var death_sound: PackedScene = load("res://Scenes/enemy_sounds.tscn")
+@onready var enemy_gunshot = $Enemy_Gunshot
 
 func _ready() -> void:
 	nav_agent.max_speed = speed
@@ -32,7 +32,7 @@ func _ready() -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
-		enemy_death.play()
+		play_enemy_death()
 		in_game_ui.kill_count += 1
 		drop_hp_renew()
 		queue_free()
@@ -97,3 +97,8 @@ func boost_stats(instance) -> void:
 	var boost_multiplier = floor(in_game_ui.kill_count / kills_need_for_boost)
 	if boost_multiplier > 0:
 		instance.damage += damage_boost * boost_multiplier
+
+func play_enemy_death():
+	var death = death_sound.instantiate()
+	death.global_transform = global_transform
+	get_parent().add_child(death)

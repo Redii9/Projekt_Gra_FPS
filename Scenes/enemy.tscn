@@ -20,7 +20,9 @@ height = 0.5
 
 [node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent") groups=["enemy"]]
 script = ExtResource("1_hghv2")
+speed = 5.0
 nav_agent = NodePath("NavigationAgent3D")
+drop_hp_chance = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_1f0kj")
