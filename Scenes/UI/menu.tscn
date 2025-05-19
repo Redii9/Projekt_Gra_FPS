@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds8ja5st63qfc"]
+[gd_scene load_steps=8 format=3 uid="uid://ds8ja5st63qfc"]
 
 [ext_resource type="Script" uid="uid://cu5u52htsk3a8" path="res://Scripts/menu.gd" id="1_1rerr"]
 [ext_resource type="AudioStream" uid="uid://6yfyqqn3m0at" path="res://Assets/Sounds/menu.mp3" id="2_uk6bn"]
+[ext_resource type="Texture2D" uid="uid://co1hmxjndkcxw" path="res://obraz_menu.png" id="2_wuk0b"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rerr"]
-bg_color = Color(0.581094, 0.45728, 0.470233, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1b1y"]
+texture = ExtResource("2_wuk0b")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjcm1"]
+bg_color = Color(0.50357, 0.390414, 0.401546, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -12,17 +16,8 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
 shadow_size = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xhh6f"]
-bg_color = Color(0.580392, 0.458824, 0.470588, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
-shadow_size = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
-bg_color = Color(0.494118, 0.454902, 0.470588, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugp1d"]
+bg_color = Color(0.186708, 0.166799, 0.174799, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -31,13 +26,14 @@ shadow_color = Color(0.443137, 0.235294, 0.160784, 0.6)
 shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
-bg_color = Color(0.493041, 0.454238, 0.472409, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_color = Color(0.443323, 0.234534, 0.161196, 0.6)
+bg_color = Color(0.806592, 0.779621, 0.792067, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.256146, 0.124502, 0.0782168, 0.6)
 shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -55,6 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t1b1y")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -87,42 +84,52 @@ grow_vertical = 2
 
 [node name="startGame" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_1rerr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tjcm1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ugp1d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
 text = "Start Game"
 
 [node name="options" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_1rerr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tjcm1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ugp1d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
 text = "Options"
 
 [node name="credits" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_1rerr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tjcm1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ugp1d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
 text = "Credits"
 
 [node name="exit" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxFlat_1rerr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xhh6f")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tjcm1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ugp1d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_158mb")
 text = "Exit"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_uk6bn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 552.0
+offset_bottom = 96.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 66
+text = "GODOT GAME"
 
 [connection signal="pressed" from="Control/VBoxContainer/startGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/options" to="." method="_on_options_pressed"]
