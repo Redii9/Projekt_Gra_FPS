@@ -22,6 +22,9 @@ var fire_rate: float = 1.0
 @export var damage_boost: int = 1
 @export var kills_need_for_boost: int = 10
 
+@onready var enemy_death = $"../Enemy_Death"
+@onready var enemy_gunshot = $"../Enemy_Gunshot"
+
 func _ready() -> void:
 	nav_agent.max_speed = speed
 	_update_target_position()
@@ -29,6 +32,7 @@ func _ready() -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
+		enemy_death.play()
 		in_game_ui.kill_count += 1
 		drop_hp_renew()
 		queue_free()
@@ -67,6 +71,7 @@ func shoot() -> void:
 		return
 	shoot_bullet()
 	can_shoot = false
+	enemy_gunshot.play()
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
 

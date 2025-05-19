@@ -16,6 +16,10 @@ var bullet = load("res://Scenes/bullet.tscn")
 @onready var raycast: RayCast3D = $Head/Camera3D/Raycast/RayCast3D
 @onready var gun_barrel: RayCast3D = $Head/Camera3D/Gun/RayCast3D
 
+@onready var gunshot = $Gunshot
+@onready var jump = $Jump
+@onready var walk = $Footsteps
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	raycast.target_position = Vector3(0, 0, -max_distance)
@@ -39,29 +43,44 @@ func _physics_process(delta: float) -> void:
 func movement(delta) -> void:
 	var input_dir = Vector3.ZERO
 	if Input.is_action_pressed("forward"):
+		play_walk()
 		input_dir -= transform.basis.z
 	if Input.is_action_pressed("backward"):
+		play_walk()
 		input_dir += transform.basis.z
 	if Input.is_action_pressed("left"):
+		play_walk()
 		input_dir -= transform.basis.x
 	if Input.is_action_pressed("right"):
+		play_walk()
 		input_dir += transform.basis.x
 	
 	input_dir = input_dir.normalized()
 	velocity.x = input_dir.x * speed
 	velocity.z = input_dir.z * speed
 	
+	
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
+			jump.play()
 			velocity.y = jump_force
 	else:
 		velocity.y -= gravity * delta
+
+func play_walk():
+	if not walk.playing:
+		walk.play()
+	else:
+		 # Czekaj na zakonczenie odtwarzania
+		await walk.finished
+		walk.play()
 
 func shoot() -> void:
 	if !can_shoot:
 		return
 	
 	can_shoot = false
+	gunshot.play()
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
 

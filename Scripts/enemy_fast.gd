@@ -19,6 +19,8 @@ var player_in_area = null
 @export var speed_boost: int = 1
 @export var kills_need_for_boost: int = 10
 
+@onready var enemy_death = $"../Enemy_Death"
+
 func _ready() -> void:
 	boost_stats()
 	nav_agent.max_speed = max_speed
@@ -42,6 +44,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health <= 0:
+		enemy_death.play()
 		in_game_ui.kill_count += 1
 		drop_hp_renew()
 		player_in_area = null

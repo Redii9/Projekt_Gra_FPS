@@ -13,6 +13,8 @@ var resolutions: Array[Vector2] = [
 
 var fps_limits: Array = [60, 120, 144, 240, 0]
 
+@onready var BackgroundMusic = $BackgroundMusic
+
 func _ready() -> void:
 	config.load("user://settings.cfg")
 	load_fullscreen()
@@ -22,6 +24,10 @@ func _ready() -> void:
 	# sciezka do katalogu testowanie:
 	print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
 	OS.shell_open(OS.get_user_data_dir())
+
+func _process(_delta: float) -> void:
+	if not BackgroundMusic.playing:
+		BackgroundMusic.play()
 
 func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
