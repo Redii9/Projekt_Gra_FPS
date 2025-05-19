@@ -21,8 +21,11 @@ height = 0.5
 
 [node name="Enemy_Range" type="CharacterBody3D" node_paths=PackedStringArray("raycast", "nav_agent") groups=["enemy"]]
 script = ExtResource("1_16r6a")
+speed = 7.0
+stopping_distance = 30.0
 raycast = NodePath("RayCast3D")
 nav_agent = NodePath("NavigationAgent3D")
+drop_hp_chance = 0.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ldgjb")
