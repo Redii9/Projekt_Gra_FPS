@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ny1bvo5piibq"]
+[gd_scene load_steps=17 format=3 uid="uid://ny1bvo5piibq"]
 
 [ext_resource type="Script" uid="uid://q85so3xnavo3" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dyldx3763b2h4" path="res://Scenes/player.tscn" id="1_jjgbg"]
@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dylbdu1v3cocu" path="res://Scenes/Blender/statek_kosmiczny.glb" id="11_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://1w0lpntetubg" path="res://Scenes/Blender/lazik.glb" id="12_k12tt"]
 [ext_resource type="PackedScene" uid="uid://b8hnn6ag1lkf1" path="res://Scenes/Blender/Obserwatorum.glb" id="13_h1bgf"]
-[ext_resource type="AudioStream" uid="uid://dn6fver8pu4a8" path="res://Assets/Sounds/enemy_death.wav" id="15_wsu2k"]
-[ext_resource type="AudioStream" uid="uid://cy48abbpyfwhw" path="res://Assets/Sounds/enemy_gunshot.wav" id="16_k12tt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -130,12 +128,5 @@ material = SubResource("StandardMaterial3D_jkdf5")
 
 [node name="statek_kosmiczny" parent="." instance=ExtResource("11_wsu2k")]
 transform = Transform3D(1.62212, 1.30857, -2.15786, -1.71139, -1.31483, -2.08384, -1.85469, 2.35772, 0.0355564, -91.9903, 139.845, -172.136)
-
-[node name="Enemy_Death" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("15_wsu2k")
-volume_db = 1.441
-
-[node name="Enemy_Gunshot" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("16_k12tt")
 
 [editable path="Respawn_Enemy"]
