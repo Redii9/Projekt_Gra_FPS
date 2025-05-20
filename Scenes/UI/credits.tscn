@@ -91,6 +91,7 @@ text = "Game Made By:"
 
 [node name="adrian_credits" type="RichTextLabel" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/default_color = Color(2.98411e-06, 0.63944, 0.317675, 1)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 fit_content = true
