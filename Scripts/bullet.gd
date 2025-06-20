@@ -23,7 +23,6 @@ func process_hit() -> void:
 	if raycast.is_colliding() and !has_hit:
 		var target = raycast.get_collider()
 		if !target.is_in_group("player"):
-			print("Collided with: ", target.name)
 			if target.is_in_group("enemy"):
 				target.take_damage(damage)
 			bullet.visible = false

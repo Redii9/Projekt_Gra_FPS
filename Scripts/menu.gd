@@ -22,8 +22,8 @@ func _ready() -> void:
 	load_fps_limit()
 	load_v_sync()
 	# sciezka do katalogu testowanie:
-	print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
-	OS.shell_open(OS.get_user_data_dir())
+	#print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
+	#OS.shell_open(OS.get_user_data_dir())
 
 func _process(_delta: float) -> void:
 	if not BackgroundMusic.playing:

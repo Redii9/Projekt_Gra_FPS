@@ -25,7 +25,6 @@ func process_hit() -> void:
 		if !is_instance_valid(target):
 			return
 		if !target.is_in_group("enemy"):
-			print("Collided with: ", target.name)
 			if target.is_in_group("player"):
 				target.take_player_damage(damage)
 			bullet.visible = false

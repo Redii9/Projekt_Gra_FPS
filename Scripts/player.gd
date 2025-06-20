@@ -92,7 +92,6 @@ func shoot_bullet() -> void:
 
 func take_player_damage(damage):
 	health = health - damage
-	print("Player took", damage, " damage")
 	if health <= 0:
 		apply_end_screen()
 

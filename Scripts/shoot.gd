@@ -25,12 +25,9 @@ func shoot() -> void:
 	if !can_shoot:
 		return
 	
-	print("shooted")
 	if raycast.is_colliding():
 		var target = raycast.get_collider()
-		print("Collided with: ", target.name)
 		if target.is_in_group("enemy"):
-			print("collided")
 			target.take_damage(damage)
 	
 	can_shoot = false

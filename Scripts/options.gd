@@ -90,15 +90,12 @@ func load_v_sync() -> void:
 	var v_sync = config.get_value("video", "v_sync", true)
 	v_sync_button.button_pressed = v_sync
 	set_v_sync(v_sync)
-	print("Loaded, ", v_sync)
 
 func set_v_sync(toggled_on: bool) -> void:
 	if toggled_on:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-		print("Enabled")
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-		print("Disabled")
 	config.set_value("video", "v_sync", toggled_on)
 	config.save("user://settings.cfg")
 
