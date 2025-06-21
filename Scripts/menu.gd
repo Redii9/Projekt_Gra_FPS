@@ -21,7 +21,8 @@ func _ready() -> void:
 	load_resolutions()
 	load_fps_limit()
 	load_v_sync()
-	# sciezka do katalogu testowanie:
+	load_volume_options()
+	#sciezka do katalogu testowanie:
 	#print("Ścieżka do katalogu user://: ", OS.get_user_data_dir())
 	#OS.shell_open(OS.get_user_data_dir())
 
@@ -107,3 +108,7 @@ func load_v_sync() -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func load_volume_options():
+	var saved_volume = config.get_value("master_volume", "Master", 0.5)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(saved_volume))

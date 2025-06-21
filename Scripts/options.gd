@@ -1,6 +1,7 @@
 extends Control
 
 var menu: Node = null
+@export var volume_bus: String = "Master"
 var config = ConfigFile.new()
 
 @export var fullscreen_button: CheckButton
@@ -11,12 +12,16 @@ var config = ConfigFile.new()
 var resolutions: Array[Vector2] = []
 var fps_limits: Array = []
 
+@export var master_volume: HSlider
+@export var volume_bar: ProgressBar
+
 func _ready() -> void:
 	config.load("user://settings.cfg")
 	load_fullscreen()
 	load_resolutions()
 	load_fps_limit()
 	load_v_sync()
+	load_volume_options()
 
 func _on_return_pressed() -> void:
 	# Usuniecie wszystkich instancji w grupie
@@ -101,3 +106,18 @@ func set_v_sync(toggled_on: bool) -> void:
 
 func _on_v_sync_toggled(toggled_on: bool) -> void:
 	set_v_sync(toggled_on)
+
+
+func load_volume_options():
+	var saved_volume = config.get_value("master_volume", volume_bus, 1.0)
+	master_volume.value = saved_volume 
+	volume_bar.value = saved_volume * 100
+
+
+func _on_master_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(volume_bus), linear_to_db(value))
+	volume_bar.value = value * 100
+	
+	# Zapisanie ustawien
+	config.set_value("master_volume", volume_bus, value)
+	config.save("user://settings.cfg")
